@@ -51,8 +51,12 @@ class CurlRequest {
       CURLOPT_CUSTOMREQUEST => $this->method,
       CURLOPT_URL => $url,
       CURLOPT_HTTPHEADER => $this->headers,
+      CURLOPT_SSL_VERIFYPEER => false,
     ];
 
+    // added curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); to allow an insecure connection
+
+    
     if ($hasBody) {
       $fields = $this->fields;
       foreach ($this->files as $field => $file) {
